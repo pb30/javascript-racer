@@ -178,6 +178,7 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
   stats: function(parentId, id) { // construct mr.doobs FPS counter - along with friendly good/bad/ok message box
 
     var result = new Stats();
+    return result;
     result.domElement.id = id || 'stats';
     Dom.get(parentId).appendChild(result.domElement);
 
