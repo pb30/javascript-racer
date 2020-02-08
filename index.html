@@ -26,10 +26,9 @@
 <body>
 
 <div id="intro">
-    <p>Instructions here!</p>
-    <p>Use the <b>arrow keys</b> to drive the car.</p>
-    <button onclick="$('#intro').hide();$('#racer').show();">Start</button>
-    <p>Or press Enter...</p>
+    <img src="images/instructions.jpg" style="max-width: 60%;"><br/><br/>
+    <button onclick="$('#intro').hide();$('#racer').show();" style="padding:0.5rem 2rem;border-radius: 10px;">Start</button><br>
+    <span>Or press Enter...</span>
 </div>
 <div id="racer" style="display: none">
     <p style="text-align: center;">Use the <b>arrow keys</b> to drive the car.</p>
@@ -50,18 +49,17 @@
     <span id="mute" style="display: none"></span>
 </div>
 <div id="loser" style="display: none">
+    <img id="loser_img" src="images/gameover-crash.jpg" style="max-width: 55%;">
     <h1>Mission Failed</h1>
     <p id="loser_reason">Agency property damaged...</p>
-    <button onclick="window.location.reload()">Try Again</button>
-    <p>Or press Enter...</p>
+    <button onclick="window.location.reload()" style="padding:0.5rem 2rem;border-radius: 10px;">Try Again</button><br/>
+    <span>Or press Enter...</span>
 </div>
 <div id="winner" style="display: none">
-    <h1>Mission Complete</h1>
-    <img src="https://assets.atlasobscura.com/media/W1siZiIsInVwbG9hZHMvcGxhY2VfaW1hZ2VzL2E2ZDcyOTM4ZTVmZTE5ODAzZF8zNDI2NzE1OTYzNF80ODVlZWFlYjhmX28uanBnIl0sWyJwIiwidGh1bWIiLCJ4MzkwPiJdLFsicCIsImNvbnZlcnQiLCItcXVhbGl0eSA4MSAtYXV0by1vcmllbnQiXV0/34267159634_485eeaeb8f_o.jpg"/>
-    <p>Location is: <code>CHEATER MCCHEATERVILLE</code></p>
+    <img src="images/w.jpg" style="max-width: 55%;">
     <p>Click below to destroy the information from other agencies.</p>
-    <button onclick="window.location.reload()">Destroy Information</button>
-    <p>Or press Enter...</p>
+    <button onclick="window.location.reload()" style="padding:0.5rem 2rem;border-radius: 10px;">Destroy Information</button><br>
+    <span>Or press Enter...</span>
 </div>
 
 <script src="stats.js"></script>
@@ -172,6 +170,7 @@
                         console.log('OBJECT IMPACT');
                         $('#racer').hide();
                         $('#loser_reason').text('Agency property damaged...');
+                        $('#loser_img').attr('src', 'images/gameover-crash.jpg');
                         $('#loser').show();
                     }
                     return;
@@ -212,7 +211,6 @@
             if (currentLapTime && (startPosition < playerZ)) {
                 console.log('END OF LAP');
                 $('#racer').hide();
-                $('#winner code').text(atob('UGFyb25lbGxhIENhc3RsZQ=='));
                 $('#winner').show();
                 return;
                 lastLapTime = currentLapTime;
@@ -238,9 +236,10 @@
 
         if (currentLapTime > 60) {
             console.log('OUT OF TIME');
-            $('#loser').show();
+            $('#loser_img').attr('src', 'images/gameover-time.jpg');
             $('#loser_reason').text('Times up!');
             $('#racer').hide();
+            $('#loser').show();
         }
 
     }
